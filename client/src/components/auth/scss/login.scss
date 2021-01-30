@@ -1,0 +1,55 @@
+.form{
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+}
+
+.form-group{
+    position: relative;
+    width: 100vw;
+    height: 75vh;
+}
+
+.form-field{
+    position: relative;
+    width: 40vw;
+    height: auto;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 2px solid black;
+    border-radius: 10px;
+    background-color: #c7cfb7;
+}
+
+.login h2{
+    transform: translate(20%, 0);
+    margin-top: 16px;
+    margin-bottom: 16px;
+    color: #23689b;
+}
+
+.fields{
+    transform: translate(20%, 0);
+}
+
+.ele{
+    border: 2px solid black;
+}
+
+.submit-btn{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    transform: translate(20%, 0);
+}
+
+.footer{
+    position: relative;
+    width: 100vw;
+    height: 25vh;
+    background-color: yellow;
+}
+
+.spinner{
+    display: none;
+}
