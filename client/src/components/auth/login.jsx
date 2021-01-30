@@ -18,7 +18,7 @@ function Login(props){
         var spin = document.getElementById('spin')
         spin.style.display = 'block'
 
-        axios.post('/login',{
+        axios.post('/api/login',{
             userName: user,
             password: password
         }).then(data => {

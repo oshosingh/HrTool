@@ -23,7 +23,7 @@ function Register(props){
         var spin = document.getElementById("spinner_id");
         spin.style.display = 'block';
 
-        axios.post("/signup", {
+        axios.post("/api/signup", {
             userName: user,
             password: password
         }).then(data => {   
