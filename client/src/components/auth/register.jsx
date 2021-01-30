@@ -4,6 +4,7 @@ import Header from './header'
 import './scss/login.scss'
 import Button from '@material-ui/core/Button';
 import Spinner from '../static/spinner';
+import axios from 'axios'
 
 function Register(props){
 
@@ -19,8 +20,20 @@ function Register(props){
         }
 
         // Make spinner visible
-        // var spin = document.getElementById("spinner_id");
-        // spin.style.display = 'block';
+        var spin = document.getElementById("spinner_id");
+        spin.style.display = 'block';
+
+        axios.post("/signup", {
+            userName: user,
+            password: password
+        }).then(data => {   
+            spin.style.display = 'none'
+            props.history.push('/')
+        })
+        .catch(err => {
+            spin.style.display = 'none'
+            console.log(err)
+        })
     }
     return(
         <> 

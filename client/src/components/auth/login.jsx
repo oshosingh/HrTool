@@ -5,6 +5,7 @@ import './scss/login.scss'
 import Button from '@material-ui/core/Button';
 import Spinner from '../static/spinner'
 import { Redirect } from 'react-router-dom';
+import axios from 'axios'
 
 function Login(props){
 
@@ -14,8 +15,23 @@ function Login(props){
     const handleSubmit = (event) => {
         event.preventDefault();
 
-        // var spin = document.getElementById('spin')
-        // spin.style.display = 'block'
+        var spin = document.getElementById('spin')
+        spin.style.display = 'block'
+
+        axios.post('/login',{
+            userName: user,
+            password: password
+        }).then(data => {
+            console.log(data)
+            spin.style.display = 'none';
+            window.sessionStorage.setItem("login_status","true")
+            props.history.push("/home")
+        })
+        .catch(err => {
+            console.log(err)
+            spin.style.display = 'npne'
+        })
+
     }
 
     if(window.sessionStorage.getItem("login_status")==="true"){
