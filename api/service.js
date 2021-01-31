@@ -10,5 +10,15 @@ module.exports = {
     
         const userPool = new AmazonCognitoIdentity.CognitoUserPool(poolData);
         return userPool;
+    },
+    getProjects : callback => {
+        db_pool.query(
+            `select * from project_info`, [], (error, result, fields) => {
+                if(error){
+                    return callback(error)
+                }
+                return callback(null, result);
+            }
+        )
     }
 }

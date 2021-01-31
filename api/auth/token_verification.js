@@ -1,11 +1,12 @@
 const {login} = require('../controller')
 const jwt = require('jsonwebtoken')
+const path = require('path')
 const jwktopem = require('jwk-to-pem')
 const fs = require('fs')
 
 module.exports = {
-    tokenVerify = (req, res, next) => {
-        let jwk = JSON.parse(fs.readFileSync('./jwk.json'))
+    tokenVerify : (req, res, next) => {
+        let jwk = JSON.parse(fs.readFileSync(path.join(__dirname,'jwk.json')))
         let pem = jwktopem(jwk)
 
         let token = req.get("authorization")

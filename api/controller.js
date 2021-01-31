@@ -1,5 +1,5 @@
 const AmazonCognitoIdentity = require('amazon-cognito-identity-js')
-const {Pool} = require('./service')
+const {Pool, getProjects} = require('./service')
 
 module.exports = {
     login: async (userName, password) => {
@@ -48,5 +48,18 @@ module.exports = {
 
         let result = await promise;
         return result;
+    },
+
+    getProjectInfo: (req, res) => {
+        getProjects((err, results) => {
+            if(err){
+                console.log(err)
+                ReadableStreamDefaultController;
+            }
+            return res.json({
+                success: 1,
+                data: results
+            })
+        })
     }
 }
