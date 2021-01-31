@@ -7,7 +7,7 @@ const fs = require('fs')
 module.exports = {
     tokenVerify : (req, res, next) => {
         let jwk = JSON.parse(fs.readFileSync(path.join(__dirname,'jwk.json')))
-        let pem = jwktopem(jwk)
+        let pem = jwktopem(jwk.keys[1])
 
         let token = req.get("authorization")
         token = token.slice(7)
