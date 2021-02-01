@@ -23,6 +23,7 @@ module.exports = {
                     resolve(data)
                 },
                 onFailure: err => {
+                    console.log(err)
                     reject(err)
                 },
                 newPasswordRequired: data => {

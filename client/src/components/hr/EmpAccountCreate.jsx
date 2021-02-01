@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faHome, faUsers, faClone, faUserTie, faUserPlus, faCogs } from "@fortawesome/free-solid-svg-icons";
 import Navigation from './navigation'
 import { TextField, Button } from '@material-ui/core';
+import axios from 'axios'
 
 
 const EmpAccountCreate = (props) =>{
@@ -17,6 +18,23 @@ const EmpAccountCreate = (props) =>{
 
     const handleSubmit = (event) =>{
         event.preventDefault()
+        const token = window.sessionStorage.getItem("access_token")
+        
+        axios.post('/api/empcreate', {
+            empId: empId,
+            userName: user,
+            password: password
+        }, {
+            "headers" : {
+                "Authorization": `Bearer ${token}`
+            }
+        })
+        .then(data => {
+            console.log(data)
+        })
+        .catch(err => {
+            console.log(err)
+        })
     }
     return(
         <>

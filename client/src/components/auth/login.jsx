@@ -21,15 +21,15 @@ function Login(props){
         axios.post('/api/login',{
             userName: user,
             password: password
-        }).then(data => {
-            console.log(data)
+        }).then(result => {
             spin.style.display = 'none';
             window.sessionStorage.setItem("login_status","true")
+            window.sessionStorage.setItem("access_token", result.data.payload_data.jwtToken)
             props.history.push("/home")
         })
         .catch(err => {
             console.log(err)
-            spin.style.display = 'npne'
+            spin.style.display = 'none'
         })
 
     }

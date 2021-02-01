@@ -9,7 +9,7 @@ module.exports = {
         let jwk = JSON.parse(fs.readFileSync(path.join(__dirname,'jwk.json')))
         let pem = jwktopem(jwk.keys[1])
 
-        let token = req.get("authorization")
+        let token = req.get("Authorization")
         token = token.slice(7)
 
         if(token){
