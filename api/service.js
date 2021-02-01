@@ -1,5 +1,6 @@
 const AmazonCognitoIdentity = require('amazon-cognito-identity-js')
 const db_pool = require('./database')
+const AWS = require('aws-sdk')
 
 module.exports = {
     Pool: () => {

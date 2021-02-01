@@ -1,5 +1,5 @@
 const router = require('express').Router()
-const {login, signup, getProjectInfo} = require('./controller')
+const {login, signup, getProjectInfo, empCreate} = require('./controller')
 const {tokenVerify} = require('../api/auth/token_verification')
 
 
@@ -47,6 +47,7 @@ router.post('/signup', (req, res) => {
 
 })
 
-router.get('/project',tokenVerify, getProjectInfo)
+router.get('/project', tokenVerify, getProjectInfo)
+router.post('/empcreate', tokenVerify, empCreate)
 
 module.exports = router;
