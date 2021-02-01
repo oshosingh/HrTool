@@ -57,7 +57,6 @@ module.exports = {
         getProjects((err, results) => {
             if(err){
                 console.log(err)
-                ReadableStreamDefaultController;
             }
             return res.json({
                 success: 1,
