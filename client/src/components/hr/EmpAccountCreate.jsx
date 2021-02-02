@@ -5,7 +5,6 @@ import { faHome, faUsers, faClone, faUserTie, faUserPlus, faCogs } from "@fortaw
 import Navigation from './navigation'
 import { TextField, Button } from '@material-ui/core';
 import axios from 'axios'
-import { Redirect } from 'react-router-dom';
 
 
 const EmpAccountCreate = (props) =>{
@@ -35,9 +34,9 @@ const EmpAccountCreate = (props) =>{
         })
         .catch(err => {
             console.log(err.data.message.message)
-            if(err.data.message.message !==invalid token"){
+            if(err.data.message.message !=="invalid token"){
                 window.sessionStorage.setItem("login_status", "false")
-                <Redirect to="/" />
+                props.history.push("/")
             }
         })
     }
