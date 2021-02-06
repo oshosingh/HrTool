@@ -21,5 +21,15 @@ module.exports = {
                 return callback(null, result);
             }
         )
+    },
+    getAllEmpInfo: callback => {
+        db_pool.query(
+            `select * from employee`, [], (err, result, fields) => {
+                if(err){
+                    return callback(err)
+                }
+                return callback(null, result)
+            }
+        )
     }
 }

@@ -1,5 +1,5 @@
 const AmazonCognitoIdentity = require('amazon-cognito-identity-js')
-const {Pool, getProjects} = require('./service')
+const {Pool, getProjects, getAllEmpInfo} = require('./service')
 const AWS = require('aws-sdk')
 
 const config = require('../config.json')
@@ -57,7 +57,10 @@ module.exports = {
     getProjectInfo: (req, res) => {
         getProjects((err, results) => {
             if(err){
-                console.log(err)
+                return res.json({
+                    success: 0,
+                    message: err
+                })
             }
             return res.json({
                 success: 1,
@@ -101,5 +104,20 @@ module.exports = {
                 })
             }
         })
-    }
+    },
+
+    getAllEmp: (req, res) => {
+        getAllEmpInfo((err, result) => {
+            if(err){
+                return res.json({
+                    success: 0,
+                    messgae: err
+                })
+            }
+            return res.json({
+                success: 1,
+                payload: result
+            })
+        })
+    }       
 }
