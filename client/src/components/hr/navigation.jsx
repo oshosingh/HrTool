@@ -2,7 +2,7 @@ import React from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {faSearch, faCommentAlt, faUser, faSignOutAlt} from '@fortawesome/free-solid-svg-icons'
 import './css/navigation.scss'
-import {withRouter, Redirect} from 'react-router-dom'
+import {withRouter} from 'react-router-dom'
 
 function Nav(props){
 
@@ -20,8 +20,8 @@ function Nav(props){
                     <li><button className="nav-link-btn"><FontAwesomeIcon icon={faCommentAlt} />Activity </button></li>
                 </ul>
             </nav>
-            <a className="btn"> <FontAwesomeIcon icon={faUser} /> My Account</a>
-            <a className="btn-logout" onClick={handleLogout}> <FontAwesomeIcon icon={faSignOutAlt} /> Logout</a>
+            <button className="btn"> <FontAwesomeIcon icon={faUser} /> My Account</button>
+            <button className="btn-logout" onClick={handleLogout}> <FontAwesomeIcon icon={faSignOutAlt} /> Logout</button>
         </div>
     )
 }

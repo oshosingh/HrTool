@@ -14,10 +14,9 @@ const Employee = (props) => {
 
     const [info, setInfo] = useState(null)
     const [loader, setLoader] = useState(true)
-    const token = window.sessionStorage.getItem("access_token")
 
     useEffect(() => {
-        console.log(token)
+        const token = window.sessionStorage.getItem("access_token")
         axios.get("/api/employee", {
             "headers": {
                 "Authorization" : `Bearer ${token}`
@@ -26,7 +25,6 @@ const Employee = (props) => {
         .then(result => {
             setInfo(result.data.payload)
             setLoader(false)
-            console.log(result.data)
         })
         .catch(err => {
             setTimeout(() => {
@@ -43,13 +41,15 @@ const Employee = (props) => {
                 {loader===true ? <ProgressSpinner /> : <>
                                 <div className="main">
                                     <div className="card" style={{padding: "10px"}}>
-                                        <DataTable value={info} scrollable scrollHeight="80vh">
-                                            <Column field="id"  header="Id" sortable></Column>
-                                            <Column field="name" header="Name" sortable></Column>
+                                        <DataTable value={info} scrollable scrollHeight="65vh" emptyMessage="Nothing Found"
+                                                paginator rows={10} rowsPerPageOptions={[10, 20, 30, 40]}
+                                            >
+                                            <Column field="id"  header="Id" filter filterPlaceholder="Search By Id" sortable></Column>
+                                            <Column field="name" header="Name" filter filterPlaceholder="Search By Name" sortable></Column>
                                             <Column field="email" header="Email"></Column>
-                                            <Column field="gender" header="Gender" sortable></Column>
+                                            <Column field="gender" header="Gender" filter filterPlaceholder="Search By Gender" sortable></Column>
                                             <Column field="isActive" header="Is Active" sortable></Column>
-                                            <Column field="on_project" header="Project Name" sortable></Column>
+                                            <Column field="on_project" header="Project Name" filter filterPlaceholder="Search By Project" sortable></Column>
                                             <Column field="manager_id" header="Manager Id" sortable></Column>
                                         </DataTable>
                                     </div>

@@ -11,10 +11,6 @@ const EmpAccountCreate = (props) =>{
     const [user, setUser] = useState('')
     const [password, setPassword] = useState('')
 
-    const handleClick = (path) => {
-        props.history.push(path)
-    }
-
     const handleSubmit = (event) =>{
         event.preventDefault()
         const token = window.sessionStorage.getItem("access_token")
