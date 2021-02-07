@@ -27,9 +27,7 @@ const Employee = (props) => {
             setLoader(false)
         })
         .catch(err => {
-            setTimeout(() => {
-                setLoader(false)
-            }, 5000)
+            setLoader(false)
         })
     }, [])
 
