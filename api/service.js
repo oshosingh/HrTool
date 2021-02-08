@@ -31,5 +31,16 @@ module.exports = {
                 return callback(null, result)
             }
         )
+    },
+    getMaxEmpId: callback => {
+        db_pool.query(
+            `select id from employee order by id desc limit 1`, [], (err, result, fields) => {
+                if(err){
+                    return callback(err)
+                }
+                console.log(result)
+                return callback(null, result)
+            }
+        )
     }
 }
